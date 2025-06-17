@@ -150,25 +150,34 @@ export default function Home() {
         </div>
 
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center justify-center px-3 sm:px-6 relative">
+        <section id="home" className="min-h-screen pt-28 md:pt-0 flex items-start md:items-center justify-center md:justify-center px-3 sm:px-6 relative">
           <div className="container-nw mx-auto text-center z-10">
             <div className="animate-fade-in-up">
-              <div className='flex justify-center flex-col lg:flex-row lg:justify-between gap-y-10'>
+              <div className='flex justify-center flex-col lg:flex-row lg:justify-between gap-y-14'>
                 <div className='text-left'>
-                  <h1 className={`text-[32px] sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold inline-block mb-6 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
+                  <h1 className={`text-[32px] sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold inline-block mb-2 md:mb-6 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
                     Anvit Singh Chouhan
                     {/* Test */}
                   </h1>
-                  
+
                   <p className={`text-lg md:text-xl mb-8 lg:max-w-2xl lg:mx-auto ${secondaryTextColor} leading-relaxed`}>
                     Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies.
                     From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.
                   </p>
-                  <button
+                  
+                  <div className='flex items-center gap-3'>
+                    <button
                     onClick={() => scrollToSection('projects')}
-                    className={`inline-block text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                    className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
                     View My Work
                   </button>
+
+                  <button
+                    onClick={() => scrollToSection('projects')}
+                    className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                    <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
+                  </button>
+                  </div>
                 </div>
 
                 <div className='w-full max-w-100 mx-auto md:mx-0'>
