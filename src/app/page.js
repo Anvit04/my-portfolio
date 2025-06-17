@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Mail, ExternalLink, Github, Linkedin, Menu, X, Sun, Moon } from 'lucide-react';
 import { skills, projects } from "../constants/data";
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -169,7 +170,15 @@ export default function Home() {
                 </div>
 
                 <div className='w-full max-w-100'>
-                  <img className='w-full max-w-80 mx-auto' src='./assets/img/image-dummy.svg' />
+                  <Image
+                  className='w-full max-w-80 mx-auto'
+                    src="./assets/img/image-dummy.svg"
+                    alt="A sample image"
+                    width={600} // adjust width
+                    height={400} // adjust height
+                    priority
+                  />
+                  {/* <img className='w-full max-w-80 mx-auto' src='./assets/img/image-dummy.svg' /> */}
                 </div>
               </div>
             </div>
@@ -200,7 +209,7 @@ export default function Home() {
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-8'
                     } ${hoverCard}`}
-                  // style={{ transitionDelay: `${index * 100}ms` }}
+                // style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className={`text-4xl mb-4 w-16 h-16 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                     {skill.icon}
@@ -249,7 +258,7 @@ export default function Home() {
                       {/* {project.emoji} */}
                     </div>
                   </div>
-                  {/* <img src={project.proImage}/> */}
+
                   <div className="p-8">
                     <h3 className={`text-xl font-semibold mb-3 ${theme === 'dark' ? 'group-hover:text-cyan-400 ' : 'group-hover:text-[#FF4D00]'} transition-colors duration-400`}>
                       {project.title}
@@ -287,7 +296,7 @@ export default function Home() {
                   } bg-clip-text text-transparent transition-all duration-700 ${visibleElements.has('contact-title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
               >
-                Let's Create Something Amazing
+                Let&#39;s Create Something Amazing
               </h2>
               <p
                 id="contact-description"
@@ -296,7 +305,7 @@ export default function Home() {
                   }`}
                 style={{ transitionDelay: '200ms' }}
               >
-                Ready to bring your vision to life? I'm always excited to work on new projects and collaborate with innovative teams.
+                Ready to bring your vision to life? I&#39;m always excited to work on new projects and collaborate with innovative teams.
               </p>
 
               <div
