@@ -69,7 +69,7 @@ export default function Home() {
         {/* Header */}
         <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrollY > 10 ? headerScrollBg : headerBg
           }`}>
-          <nav className="container-nw mx-auto px-0 py-4 flex justify-between items-center">
+          <nav className="container-nw mx-auto px-3 2xl:px-0 py-4 flex justify-between items-center">
             <div className={`text-2xl font-bold bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}> ASC </div>
 
             <div className="flex items-center gap-4">
@@ -114,22 +114,23 @@ export default function Home() {
           </nav>
 
           {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className={`md:hidden ${theme === 'dark' ? 'bg-slate-900/95 backdrop-blur-xl' : 'bg-white/95 backdrop-blur-xl'} border-t ${theme === 'dark' ? 'border-slate-700' : 'border-slate-200'}`}>
-              <ul className="py-4 px-6 space-y-4">
-                {['Home', 'Skills', 'Projects', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <button
-                      onClick={() => scrollToSection(item.toLowerCase())}
-                      className="block w-full text-left hover:text-cyan-400 transition-colors duration-300"
-                    >
-                      {item}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+          {/* {isMenuOpen && ( */}
+            <div className={isMenuOpen ? `mobSideNav navOpen relative ${theme === 'dark' ? 'darker ' : 'lighter '}` : 'mobSideNav fixed'}>
+              <div className={isMenuOpen ? `md:hidden h-full relative z-10  ${theme === 'dark' ? 'bg-slate-900/25 backdrop-blur-md ' : 'bg-white/25 backdrop-blur-md '}` : ''}>
+                <ul className="py-4 px-6 space-y-4">
+                  {['Home', 'Skills', 'Projects', 'Contact'].map((item) => (
+                    <li key={item}>
+                      <button
+                        onClick={() => scrollToSection(item.toLowerCase())}
+                        className={`block w-full text-left ${theme === 'dark' ? 'hover:text-cyan-400 ' : 'hover:text-[#FF4D00]'} transition-colors duration-300 cursor-pointer`}>
+                        {item}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          )}
+          {/* )} */}
         </header>
 
         {/* Floating Background Elements */}
@@ -149,33 +150,34 @@ export default function Home() {
         </div>
 
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center justify-center px-6 relative">
+        <section id="home" className="min-h-screen flex items-center justify-center px-3 sm:px-6 relative">
           <div className="container-nw mx-auto text-center z-10">
             <div className="animate-fade-in-up">
-              <div className='flex justify-between'>
+              <div className='flex justify-center flex-col lg:flex-row lg:justify-between gap-y-10'>
                 <div className='text-left'>
-                  <h1 className={`text-5xl md:text-7xl font-extrabold inline-block mb-6 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
-                    {/* Anvit Singh Chouhan */}
-                    Test
+                  <h1 className={`text-[32px] sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold inline-block mb-6 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
+                    Anvit Singh Chouhan
+                    {/* Test */}
                   </h1>
-                  <p className={`text-lg md:text-xl mb-8 max-w-2xl mx-auto ${secondaryTextColor} leading-relaxed`}>
+                  <p className={`text-lg md:text-xl mb-8 lg:max-w-2xl lg:mx-auto ${secondaryTextColor} leading-relaxed`}>
                     Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies.
                     From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.
                   </p>
                   <button
                     onClick={() => scrollToSection('projects')}
-                    className={`inline-block px-8 py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                    className={`inline-block text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
                     View My Work
                   </button>
                 </div>
 
-                <div className='w-full max-w-100'>
+                <div className='w-full max-w-100 mx-auto md:mx-0'>
                   <Image
-                  className='w-full max-w-80 mx-auto'
-                    src="./assets/img/image-dummy.svg"
+                    className={`w-full max-w-60 xl:max-w-80 p-1 mx-auto rounded-full bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`}
+                    // src="./assets/img/image-dummy.svg"
+                    src="/assets/img/anvit-office-nw.webp"
                     alt="A sample image"
-                    width={600} // adjust width
-                    height={400} // adjust height
+                    width={600}
+                    height={400}
                     priority
                   />
                   {/* <img className='w-full max-w-80 mx-auto' src='./assets/img/image-dummy.svg' /> */}
@@ -187,7 +189,7 @@ export default function Home() {
 
         {/* Skills Section */}
         <section id="skills" className={`py-20 ${sectionBg}`}>
-          <div className="container-nw mx-auto px-6">
+          <div className="container-nw mx-auto px-3 sm:px-6">
             <h2
               id="skills-title"
               data-animate
@@ -214,7 +216,8 @@ export default function Home() {
                   <div className={`text-4xl mb-4 w-16 h-16 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                     {skill.icon}
                   </div>
-                  <h3 className={`text-xl font-semibold mb-4  ${theme === 'dark' ? 'group-hover:text-cyan-400' : 'group-hover:text-[#FF4D00] '} transition-colors duration-400`}>
+                  <h3 className={`text-xl font-semibold mb-4  bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-200 to-cyan-400 group-hover:from-cyan-400 group-hover:to-pink-500' : 'from-slate-900 to-cyan-800 group-hover:from-[#FF4D00] group-hover:to-[#FFB326]'
+                    } bg-clip-text text-transparent transition-colors duration-400`}>
                     {skill.title}
                   </h3>
                   <p className={`${secondaryTextColor} leading-relaxed`}>
@@ -228,7 +231,7 @@ export default function Home() {
 
         {/* Projects Section */}
         <section id="projects" className="py-20">
-          <div className="container-nw mx-auto px-6">
+          <div className="container-nw mx-auto px-3 sm:px-6">
             <h2
               id="projects-title"
               data-animate
@@ -260,7 +263,8 @@ export default function Home() {
                   </div>
 
                   <div className="p-8">
-                    <h3 className={`text-xl font-semibold mb-3 ${theme === 'dark' ? 'group-hover:text-cyan-400 ' : 'group-hover:text-[#FF4D00]'} transition-colors duration-400`}>
+                    <h3 className={`text-xl font-semibold mb-3 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-200 to-cyan-400' : 'from-slate-900 to-cyan-800'
+                      } bg-clip-text text-transparent inline-block transition-colors duration-400`}>
                       {project.title}
                     </h3>
                     <p className={`${secondaryTextColor} mb-6 leading-relaxed line-clamp-3 max-w-[100%] overflow-hidden text-ellipsis`}>
@@ -270,12 +274,12 @@ export default function Home() {
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className={`px-3 py-1 ${theme === 'dark' ? 'border-cyan-400/30 bg-cyan-400/20 text-cyan-400' : 'text-[#FF4D00] bg-[#FF4D00]/20 border-[#FF4D00]/30'} rounded-full text-sm border `}>
+                          className={`px-3 py-1 ${theme === 'dark' ? 'border-cyan-400/30 bg-cyan-400/20 text-cyan-400' : 'text-[#FF4D00] bg-[#FFB326]/20 border-[#FFB326]/30'} rounded-full text-sm border `}>
                           {tech}
                         </span>
                       ))}
                     </div>
-                    <Link href={project.proLink} target='_blank' className={`font-semibold ${theme === 'dark' ? 'text-cyan-400 hover:text-pink-500' : 'text-[#FF4D00] '} transition-colors duration-400 inline-flex items-center gap-2`}>
+                    <Link href={project.proLink} target='_blank' className={`font-semibold ${theme === 'dark' ? 'text-cyan-400 ' : 'text-cyan-800 '} transition-colors hover:underline duration-400 inline-flex items-center gap-2`}>
                       View Project <ExternalLink size={16} />
                     </Link>
                   </div>
@@ -287,7 +291,7 @@ export default function Home() {
 
         {/* Contact Section */}
         <section id="contact" className={`py-20 ${sectionBg}`}>
-          <div className="container-nw mx-auto px-6">
+          <div className="container-nw mx-auto px-3 sm:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h2
                 id="contact-title"
@@ -334,8 +338,8 @@ export default function Home() {
 
         {/* Footer */}
         <footer className={`py-8 ${footerBorder}`}>
-          <div className={`container-nw mx-auto px-6 text-center ${footerText}`}>
-            <p>&copy; 2025 Anvit singh chouhan. Designed & Developed with passion using Next.js.</p>
+          <div className={`container-nw mx-auto px-3 sm:px-6 text-center ${footerText}`}>
+            <p>&copy; 2025 Anvit Singh Chouhan. Designed & Developed with passion using Next.js.</p>
           </div>
         </footer>
 

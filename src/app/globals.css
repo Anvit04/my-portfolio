@@ -30,3 +30,11 @@ body {
 .container-nw {
   @apply max-w-[1340px] w-full;
 }
+
+.mobSideNav {
+  @apply h-[calc(100vh_-_68px)] w-full transition-all duration-[0.25s] -translate-x-full left-0;
+}
+
+.mobSideNav.navOpen {
+  @apply translate-0;
+}
