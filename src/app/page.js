@@ -159,6 +159,7 @@ export default function Home() {
                     Anvit Singh Chouhan
                     {/* Test */}
                   </h1>
+                  
                   <p className={`text-lg md:text-xl mb-8 lg:max-w-2xl lg:mx-auto ${secondaryTextColor} leading-relaxed`}>
                     Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies.
                     From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.
