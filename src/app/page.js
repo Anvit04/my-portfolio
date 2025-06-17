@@ -5,12 +5,17 @@ import { Mail, ExternalLink, Github, Linkedin, Menu, X, Sun, Moon } from 'lucide
 import { skills, projects } from "../constants/data";
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [visibleElements, setVisibleElements] = useState(new Set());
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [theme, setTheme] = useState('dark'); // 'dark' or 'light'
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Toggle theme function
   const toggleTheme = () => {
@@ -115,21 +120,21 @@ export default function Home() {
 
           {/* Mobile Menu */}
           {/* {isMenuOpen && ( */}
-            <div className={isMenuOpen ? `mobSideNav navOpen relative ${theme === 'dark' ? 'darker ' : 'lighter '}` : 'mobSideNav fixed'}>
-              <div className={isMenuOpen ? `md:hidden h-full relative z-10  ${theme === 'dark' ? 'bg-slate-900/25 backdrop-blur-md ' : 'bg-white/25 backdrop-blur-md '}` : ''}>
-                <ul className="py-4 px-6 space-y-4">
-                  {['Home', 'Skills', 'Projects', 'Contact'].map((item) => (
-                    <li key={item}>
-                      <button
-                        onClick={() => scrollToSection(item.toLowerCase())}
-                        className={`block w-full text-left ${theme === 'dark' ? 'hover:text-cyan-400 ' : 'hover:text-[#FF4D00]'} transition-colors duration-300 cursor-pointer`}>
-                        {item}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className={isMenuOpen ? `mobSideNav navOpen relative ${theme === 'dark' ? 'darker ' : 'lighter '}` : 'mobSideNav fixed'}>
+            <div className={isMenuOpen ? `md:hidden h-full relative z-10  ${theme === 'dark' ? 'bg-slate-900/25 backdrop-blur-md ' : 'bg-white/25 backdrop-blur-md '}` : ''}>
+              <ul className="py-4 px-6 space-y-4">
+                {['Home', 'Skills', 'Projects', 'Contact'].map((item) => (
+                  <li key={item}>
+                    <button
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      className={`block w-full text-left ${theme === 'dark' ? 'hover:text-cyan-400 ' : 'hover:text-[#FF4D00]'} transition-colors duration-300 cursor-pointer`}>
+                      {item}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </div>
+          </div>
           {/* )} */}
         </header>
 
@@ -164,33 +169,31 @@ export default function Home() {
                     Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies.
                     From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.
                   </p>
-                  
+
                   <div className='flex items-center gap-3'>
                     <button
-                    onClick={() => scrollToSection('projects')}
-                    className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
-                    View My Work
-                  </button>
+                      onClick={() => scrollToSection('projects')}
+                      className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                      View My Work
+                    </button>
 
-                  <button
-                    onClick={() => scrollToSection('projects')}
-                    className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
-                    <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
-                  </button>
+                    <button
+                      onClick={openModal}
+                      className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                      <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
+                    </button>
                   </div>
                 </div>
 
                 <div className='w-full max-w-100 mx-auto md:mx-0'>
                   <Image
                     className={`w-full max-w-60 xl:max-w-80 p-1 mx-auto rounded-full bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`}
-                    // src="./assets/img/image-dummy.svg"
                     src="/assets/img/anvit-office-nw.webp"
                     alt="A sample image"
                     width={600}
                     height={400}
                     priority
                   />
-                  {/* <img className='w-full max-w-80 mx-auto' src='./assets/img/image-dummy.svg' /> */}
                 </div>
               </div>
             </div>
@@ -220,9 +223,7 @@ export default function Home() {
                     } ${visibleElements.has(`skill-${index}`)
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-8'
-                    } ${hoverCard}`}
-                // style={{ transitionDelay: `${index * 100}ms` }}
-                >
+                    } ${hoverCard}`} >
                   <div className={`text-4xl mb-4 w-16 h-16 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                     {skill.icon}
                   </div>
@@ -263,7 +264,6 @@ export default function Home() {
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-8'
                     }`}
-                // style={{ transitionDelay: `${index * 150}ms` }}
                 >
                   <div className={`h-48 ${cardBorder} border-b border-t-0 border-l-0 border-r-0 overflow-hidden`}>
                     <div className={` h-full flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-400`}
@@ -352,6 +352,53 @@ export default function Home() {
             <p>&copy; 2025 Anvit Singh Chouhan. Designed & Developed with passion using Next.js.</p>
           </div>
         </footer>
+
+        {/* Modal */}
+        <AnimatePresence>
+          {isModalOpen && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                className="fixed inset-0 bg-black/25 backdrop-blur-sm bg-opacity-50 z-60"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={closeModal}
+              />
+
+              {/* Modal content */}
+              <motion.div
+                className={`fixed z-80 top-1/2 left-1/2 w-11/12 max-w-md ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} rounded-xl shadow-xl transform -translate-x-1/2 -translate-y-1/2`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className={`${theme === 'dark' ? 'text-gray-100 border-white/25' : 'text-gray-800 border-slate-300'} flex justify-between px-4 py-2 border-[1px] border-t-0 border-l-0 border-r-0`}>
+                  <h2 className={`text-xl font-semibold mb-0 `}>Hire Me</h2>
+                  <span className='block cursor-pointer' onClick={closeModal}><X /></span>
+                </div>
+
+                <div className='p-6'>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">This is your modal content here.</p>
+                </div>
+
+                <div className={`${theme === 'dark' ? 'border-white/25' : 'border-slate-300'} flex gap-2.5 px-4 py-2 border-[1px] border-b-0 border-l-0 border-r-0`}>
+                  <button
+                  className={`px-4 py-2 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white rounded-full hover:scale-105 transition-transform`}>
+                  Save
+                </button>
+
+                <button
+                  onClick={closeModal}
+                  className={`px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-full hover:scale-105 transition-transform`}>
+                  Cancel
+                </button>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
         <style jsx>{`
         @keyframes fade-in-up {
