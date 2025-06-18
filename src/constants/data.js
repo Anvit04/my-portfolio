@@ -41,7 +41,6 @@ export const skills = [
 // constants/projects.js
 export const projects = [
   {
-    emoji: '🏢',
     title: 'Transport 360',
     description: 'Transport360 is built specifically for the Indian logistics industry, combining fleet, load, and accounting management in one easy-to-use platform. Backed by a team with deep transport domain expertise, we focus on real-world usability for owners, drivers, and staff alike. With scalable tech, AI-powered insights, and reliable support, we’re your trusted partner in making transport operations smarter and more efficient.',
     technologies: ['React', 'React Bootstrap', 'Recharts'],
@@ -49,7 +48,6 @@ export const projects = [
     proLink: 'https://transport360.in/',
   },
   {
-    emoji: '🛍️',
     title: 'ICAI Indore',
     description: 'ICAI, Indore was incepted in 1971. Since then, we have grown into a community of 4000+ members who have continued to provide exceptional Chartered Accountancy services across industries and a strong legacy for our future members.',
     technologies: ['AngularJs', 'PHP', 'Bootstrap', 'UIKit'],
@@ -57,7 +55,6 @@ export const projects = [
     proLink: 'https://indore-icai.org/',
   },
   {
-    emoji: '📱',
     title: 'Get AI Life',
     description: 'GetAI.life is a hybrid platform combining an AI-driven content creation toolkit with a community and resource portal. It belongs to the Fliki/MarketingBlocks ecosystem, offering dynamic AI solutions for marketing, creative content, and productivity—alongside a curated space for AI discussions, tool discovery, and peer collaboration. ',
     technologies: ['React', 'Next Js', 'Tailwind'],
@@ -65,11 +62,17 @@ export const projects = [
     proLink: 'https://getai.life/',
   },
   {
-    emoji: '📱',
     title: 'Karan Group',
     description: 'The Karan Group is a versatile African conglomerate with three main divisions: Energy, Logistics, and Agro. Its diversified structure allows it to deliver integrated solutions across key industries.',
     technologies: ['React', 'React Bootstrap', 'Recharts'],
     proImage: './assets/img/karan_group-banner.webp',
     proLink: 'https://app.karanfms.com/',
+  },
+  {
+    title: 'Mahanagar Bank',
+    description: 'Mahanagar Nagrik Sahakari Bank Limited is a community-focused urban cooperative bank in Bhopal, led by Prakash Assudani. It offers traditional banking services—deposit accounts, loan products, possibly POS/ATM services—targeted primarily at local individuals and small enterprises.',
+    technologies: ['PHP', 'Bootstrap', 'UIKit'],
+    proImage: './assets/img/Mahanagar-Bank_banner.webp',
+    proLink: 'https://mnsbankbhopal.com/',
   },
 ];

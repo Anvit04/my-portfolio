@@ -14,6 +14,16 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [theme, setTheme] = useState('dark'); // 'dark' or 'light'
 
+  const [formData, setFormData] = useState({
+    "Full Name": '',
+    "Email": '',
+    "Phone Number": '',
+    "Message": ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -67,6 +77,160 @@ export default function Home() {
   const sectionBg = theme === 'dark' ? 'bg-white/5 backdrop-blur-sm' : 'bg-slate-100/70 backdrop-blur-sm';
   const footerBorder = theme === 'dark' ? 'border-t border-white/10' : 'border-t border-slate-200';
   const footerText = theme === 'dark' ? 'text-gray-400' : 'text-slate-600';
+
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // Add this function to handle phone number input
+  const handlePhoneInputChange = (e) => {
+    const value = e.target.value;
+    // Remove all non-digit characters
+    const digitsOnly = value.replace(/\D/g, '');
+
+    // Limit to 10 digits
+    const limitedDigits = digitsOnly.slice(0, 10);
+
+    // Update the form data
+    setFormData({
+      ...formData,
+      "Phone Number": limitedDigits
+    });
+  };
+
+  // Updated validation function
+  const isValidForm = () => {
+    // Validate Full Name
+    if (!formData["Full Name"]?.trim()) {
+      alert("Please enter your name");
+      return false;
+    }
+
+    // Validate Email
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!formData["Email"] || !emailRegex.test(formData["Email"])) {
+      alert("Please enter a valid email address");
+      return false;
+    }
+
+    // Validate Phone Number - must be exactly 10 digits
+    if (formData["Phone Number"] && formData["Phone Number"].length !== 10) {
+      alert("Please enter a valid 10-digit phone number");
+      return false;
+    }
+
+    // Optional: Check if phone number contains only digits
+    if (formData["Phone Number"] && !/^\d{10}$/.test(formData["Phone Number"])) {
+      alert("Phone number must contain only digits");
+      return false;
+    }
+
+    return true;
+  };
+
+
+  // Updated handleSubmit function with better error handling
+  const handleSubmit = async () => {
+    if (!isValidForm()) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      console.log('Submitting form data:', formData);
+
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbwITyCpNgWanRsmRW0xwCXv9c2udzlXZiuafFs4tjBmwG7dVg2nh27vOg0ofgeIJHg9/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+          mode: 'no-cors' // Add this to handle CORS issues
+        }
+      );
+
+      // Note: With no-cors mode, we can't read the response
+      // So we'll assume success if no error is thrown
+      console.log('Form submitted successfully');
+      setSubmitStatus('success');
+
+      // Reset form
+      setFormData({
+        "Full Name": '',
+        "Email": '',
+        "Phone Number": '',
+        "Message": ''
+      });
+
+      // Close modal after 2 seconds
+      setTimeout(() => {
+        closeModal();
+        setSubmitStatus(null);
+      }, 2000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Alternative approach without no-cors (try this if the above doesn't work)
+  // const handleSubmitAlternative = async () => {
+  //   if (!isValidForm()) return;
+
+  //   setIsSubmitting(true);
+  //   setSubmitStatus(null);
+
+  //   try {
+  //     const formDataObj = new FormData();
+  //     Object.keys(formData).forEach(key => {
+  //       formDataObj.append(key, formData[key]);
+  //     });
+
+  //     const response = await fetch(
+  //       "https://script.google.com/macros/s/AKfycbzu3r34z69VIfAcbyY-qTi88N3C6YspUN9xTe6yjISpOeqx8DZUcCjkWHqQIWUDoIQ/exec",
+  //       {
+  //         method: "POST",
+  //         body: formDataObj
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       const result = await response.json();
+  //       if (result.result === 'success') {
+  //         setSubmitStatus('success');
+  //         setFormData({
+  //           "Full Name": '',
+  //           "Email": '',
+  //           "Phone Number": '',
+  //           "Message": ''
+  //         });
+  //         setTimeout(() => {
+  //           closeModal();
+  //           setSubmitStatus(null);
+  //         }, 2000);
+  //       } else {
+  //         throw new Error(result.error || 'Form submission failed');
+  //       }
+  //     } else {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error submitting form:', error);
+  //     setSubmitStatus('error');
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
 
   return (
     <>
@@ -155,14 +319,13 @@ export default function Home() {
         </div>
 
         {/* Hero Section */}
-        <section id="home" className="min-h-screen pt-28 md:pt-0 flex items-start md:items-center justify-center md:justify-center px-3 sm:px-6 relative">
+        <section id="home" className=" min-h-[auto] md:min-h-screen pb-20 md:pb-0 pt-28 md:pt-0 flex items-start md:items-center justify-center md:justify-center px-3 sm:px-6 relative">
           <div className="container-nw mx-auto text-center z-10">
             <div className="animate-fade-in-up">
               <div className='flex justify-center flex-col lg:flex-row lg:justify-between gap-y-14'>
                 <div className='text-left'>
-                  <h1 className={`text-[32px] sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold inline-block mb-2 md:mb-6 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
+                  <h1 className={`text-[32px] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.3] font-extrabold inline-block mb-2 md:mb-4 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
                     Anvit Singh Chouhan
-                    {/* Test */}
                   </h1>
 
                   <p className={`text-lg md:text-xl mb-8 lg:max-w-2xl lg:mx-auto ${secondaryTextColor} leading-relaxed`}>
@@ -201,25 +364,25 @@ export default function Home() {
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className={`py-20 ${sectionBg}`}>
+        <section id="skills" className={`py-16 md:py-20 ${sectionBg}`}>
           <div className="container-nw mx-auto px-3 sm:px-6">
             <h2
               id="skills-title"
               data-animate
-              className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
+              className={`text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
                 } bg-clip-text text-transparent transition-all duration-700 ${visibleElements.has('skills-title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
             >
               Technical Expertise
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {skills.map((skill, index) => (
                 <div
                   key={skill.title}
                   id={`skill-${index}`}
                   data-animate
-                  className={`${cardBg} ${cardBorder} p-8 rounded-2xl hover:scale-105 transition-all duration-400 cursor-pointer group hover:shadow-2xl ${theme === 'dark' ? 'hover:shadow-cyan-400/20' : 'hover:shadow-slate-300'
+                  className={`${cardBg} ${cardBorder} p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-400 cursor-pointer group hover:shadow-2xl ${theme === 'dark' ? 'hover:shadow-cyan-400/20' : 'hover:shadow-slate-300'
                     } ${visibleElements.has(`skill-${index}`)
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-8'
@@ -241,19 +404,19 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-20">
+        <section id="projects" className="py-16 md:py-20">
           <div className="container-nw mx-auto px-3 sm:px-6">
             <h2
               id="projects-title"
               data-animate
-              className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
+              className={`text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
                 } bg-clip-text text-transparent transition-all duration-700 ${visibleElements.has('projects-title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
             >
               Featured Projects
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
                 <div
                   key={project.title}
@@ -268,12 +431,11 @@ export default function Home() {
                   <div className={`h-48 ${cardBorder} border-b border-t-0 border-l-0 border-r-0 overflow-hidden`}>
                     <div className={` h-full flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-400`}
                       style={{ backgroundImage: `url(${project.proImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                      {/* {project.emoji} */}
                     </div>
                   </div>
 
-                  <div className="p-8">
-                    <h3 className={`text-xl font-semibold mb-3 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-200 to-cyan-400' : 'from-slate-900 to-cyan-800'
+                  <div className="p-6 md:p-8">
+                    <h3 className={`text-xl font-semibold mb-3 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-200 to-cyan-400 group-hover:from-cyan-400 group-hover:to-pink-500' : 'from-slate-900 to-cyan-800 group-hover:from-[#FF4D00] group-hover:to-[#FFB326]'
                       } bg-clip-text text-transparent inline-block transition-colors duration-400`}>
                       {project.title}
                     </h3>
@@ -300,7 +462,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className={`py-20 ${sectionBg}`}>
+        <section id="contact" className={`py-16 md:py-20 ${sectionBg}`}>
           <div className="container-nw mx-auto px-3 sm:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h2
@@ -329,18 +491,18 @@ export default function Home() {
                   }`}
                 style={{ transitionDelay: '400ms' }}
               >
-                <button className="flex items-center gap-3 px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25">
+                <button onClick={openModal} className="flex items-center cursor-pointer gap-3 px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25">
                   <Mail size={20} />
                   Send Email
                 </button>
-                <button className="flex items-center gap-3 px-8 py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
+                <button className="flex items-center cursor-pointer gap-3 px-8 py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
                   <Github size={20} />
                   View Resume
                 </button>
-                <button className="flex items-center gap-3 px-8 py-4 border-2 border-purple-400 text-purple-400 font-semibold rounded-full hover:bg-purple-400 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/25">
+                <Link href={`https://www.linkedin.com/in/anvit-singh-chouhan-961b411bb/`} target='_blank' className="flex items-center cursor-pointer gap-3 px-8 py-4 border-2 border-purple-400 text-purple-400 font-semibold rounded-full hover:bg-purple-400 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/25">
                   <Linkedin size={20} />
                   LinkedIn
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -368,32 +530,112 @@ export default function Home() {
 
               {/* Modal content */}
               <motion.div
-                className={`fixed z-80 top-1/2 left-1/2 w-11/12 max-w-md ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} rounded-xl shadow-xl transform -translate-x-1/2 -translate-y-1/2`}
+                className={`fixed z-80 top-1/2 left-1/2 w-11/12 max-w-sm ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-xl transform -translate-x-1/2 -translate-y-1/2`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 50 }}
                 transition={{ duration: 0.3 }}
               >
                 <div className={`${theme === 'dark' ? 'text-gray-100 border-white/25' : 'text-gray-800 border-slate-300'} flex justify-between px-4 py-2 border-[1px] border-t-0 border-l-0 border-r-0`}>
-                  <h2 className={`text-xl font-semibold mb-0 `}>Hire Me</h2>
-                  <span className='block cursor-pointer' onClick={closeModal}><X /></span>
+                  <h2 className={`text-xl font-medium mb-0 `}>Start a project</h2>
+                  <span className='block cursor-pointer text-sm text-gray-400' onClick={closeModal}><X /></span>
                 </div>
 
-                <div className='p-6'>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">This is your modal content here.</p>
+
+                <div className='px-4 py-5 flex flex-wrap gap-3.5'>
+                  <div className='w-full px-1.5'>
+                    <p className={`${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>Have a project that we could work together on? I would love to talk!</p>
+                  </div>
+                  <div className='w-full px-1.5'>
+                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[input:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[input:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 `}>
+                      <input
+                        id="fullname"
+                        name="Full Name"
+                        value={formData["Full Name"]}
+                        onChange={handleInputChange}
+                        type="text"
+                        placeholder="Full Name"
+                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
+                      />
+                    </div>
+                  </div>
+
+                  <div className='w-full px-1.5'>
+                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[input:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[input:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 `}>
+                      <input
+                        id="email"
+                        name="Email"
+                        value={formData["Email"]}
+                        onChange={handleInputChange}
+                        type="email"
+                        placeholder="Email"
+                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
+                      />
+                    </div>
+                  </div>
+
+                  <div className='w-full px-1.5'>
+                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[input:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[input:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 `}>
+                      <input
+                        id="phoneno"
+                        name="Phone Number"
+                        value={formData["Phone Number"]}
+                        onChange={handlePhoneInputChange}
+                        type="tel"
+                        placeholder="Phone Number (10 digits)"
+                        maxLength="10"
+                        pattern="[0-9]{10}"
+                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
+                      />
+                    </div>
+                  </div>
+
+                  <div className='w-full px-1.5'>
+                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[textarea:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[textarea:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[textarea:focus-within]:outline-2 has-[textarea:focus-within]:-outline-offset-2 `}>
+                      <textarea
+                        id="message"
+                        name="Message"
+                        value={formData["Message"]}
+                        onChange={handleInputChange}
+                        type="text"
+                        placeholder="Enter a brief description of your project"
+                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
+                      />
+                    </div>
+                  </div>
                 </div>
+
+                {/* Status Message */}
+                {submitStatus === 'success' && (
+                  <div className='mb-4'>
+                    <p className={`px-4 py-2 text-center w-11/12 mx-auto rounded-sm text-sm bg-gradient-to-r text-white from-green-400 to-green-700 `}>
+                      Submitted successfully!
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className='mb-4'>
+                    <p className={`px-4 py-2 text-center w-11/12 mx-auto rounded-sm text-sm bg-gradient-to-r text-white from-red-400 to-red-700 `}>
+                      Error submitting form. Please try again.
+                    </p>
+                  </div>
+                )}
+
 
                 <div className={`${theme === 'dark' ? 'border-white/25' : 'border-slate-300'} flex gap-2.5 px-4 py-2 border-[1px] border-b-0 border-l-0 border-r-0`}>
                   <button
-                  className={`px-4 py-2 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white rounded-full hover:scale-105 transition-transform`}>
-                  Save
-                </button>
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className={`px-4 py-2 text-sm cursor-pointer min-w-26 max-w-26 w-[120px] bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white rounded-full hover:scale-105 transition-transform`}>
+                    {isSubmitting ? 'Sending...' : 'Submit'}
+                  </button>
 
-                <button
-                  onClick={closeModal}
-                  className={`px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-full hover:scale-105 transition-transform`}>
-                  Cancel
-                </button>
+                  <button
+                    onClick={closeModal}
+                    className={`px-4 py-2 text-sm cursor-pointer min-w-26 max-w-26 w-[120px] bg-gradient-to-r from-slate-300 to-slate-400 text-black rounded-full hover:scale-105 transition-transform`}>
+                    Cancel
+                  </button>
                 </div>
               </motion.div>
             </>
