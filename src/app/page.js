@@ -582,7 +582,7 @@ export default function Home() {
                         value={formData["Phone Number"]}
                         onChange={handlePhoneInputChange}
                         type="tel"
-                        placeholder="Phone Number (10 digits)"
+                        placeholder="Phone Number"
                         maxLength="10"
                         pattern="[0-9]{10}"
                         className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
