@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Mail, ExternalLink, Github, Linkedin, Menu, X, Sun, Moon } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, Menu, X, Sun, Moon, ChevronUp } from 'lucide-react';
 import { skills, projects } from "../constants/data";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,8 +12,8 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [visibleElements, setVisibleElements] = useState(new Set());
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [theme, setTheme] = useState('dark'); // 'dark' or 'light'
-
+  const [theme, setTheme] = useState('dark');
+  const [visibleProjects, setVisibleProjects] = useState(3);
   const [formData, setFormData] = useState({
     "Full Name": '',
     "Email": '',
@@ -55,7 +55,7 @@ export default function Home() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [visibleProjects]);
 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -182,55 +182,10 @@ export default function Home() {
     }
   };
 
-  // Alternative approach without no-cors (try this if the above doesn't work)
-  // const handleSubmitAlternative = async () => {
-  //   if (!isValidForm()) return;
-
-  //   setIsSubmitting(true);
-  //   setSubmitStatus(null);
-
-  //   try {
-  //     const formDataObj = new FormData();
-  //     Object.keys(formData).forEach(key => {
-  //       formDataObj.append(key, formData[key]);
-  //     });
-
-  //     const response = await fetch(
-  //       "https://script.google.com/macros/s/AKfycbzu3r34z69VIfAcbyY-qTi88N3C6YspUN9xTe6yjISpOeqx8DZUcCjkWHqQIWUDoIQ/exec",
-  //       {
-  //         method: "POST",
-  //         body: formDataObj
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       const result = await response.json();
-  //       if (result.result === 'success') {
-  //         setSubmitStatus('success');
-  //         setFormData({
-  //           "Full Name": '',
-  //           "Email": '',
-  //           "Phone Number": '',
-  //           "Message": ''
-  //         });
-  //         setTimeout(() => {
-  //           closeModal();
-  //           setSubmitStatus(null);
-  //         }, 2000);
-  //       } else {
-  //         throw new Error(result.error || 'Form submission failed');
-  //       }
-  //     } else {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error submitting form:', error);
-  //     setSubmitStatus('error');
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
-
+  // Function to load more projects
+  const loadMoreProjects = () => {
+    setVisibleProjects(prev => prev + 3);
+  };
 
   return (
     <>
@@ -417,7 +372,7 @@ export default function Home() {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
+              {projects.slice(0, visibleProjects).map((project, index) => (
                 <div
                   key={project.title}
                   id={`project-${index}`}
@@ -458,6 +413,16 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {visibleProjects < projects.length && (
+              <div className="col-span-full flex justify-center mt-10">
+                <button
+                  onClick={loadMoreProjects}
+                  className={`px-6 py-2.5 ${cardBg} ${cardBorder} rounded-full text-sm cursor-pointer font-medium hover:scale-105 transition-transform ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-white/90'}`}>
+                  Load More
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
@@ -514,6 +479,15 @@ export default function Home() {
             <p>&copy; 2025 Anvit Singh Chouhan. Designed & Developed with passion using Next.js.</p>
           </div>
         </footer>
+
+        {scrollY > 50 ?
+          <button
+            onClick={() => scrollToSection('home')}
+            className={`fixed bottom-20 md:bottom-10 right-10 transition-all ${scrollY > 120 ? 'opacity-100' : 'opacity-0'} flex justify-center items-center rounded-full text-white w-9 h-9 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`}>
+            <ChevronUp />
+          </button>
+          : ''
+        }
 
         {/* Modal */}
         <AnimatePresence>

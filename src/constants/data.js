@@ -42,21 +42,21 @@ export const skills = [
 export const projects = [
   {
     title: 'Transport 360',
-    description: 'Transport360 is built specifically for the Indian logistics industry, combining fleet, load, and accounting management in one easy-to-use platform. Backed by a team with deep transport domain expertise, we focus on real-world usability for owners, drivers, and staff alike. With scalable tech, AI-powered insights, and reliable support, we’re your trusted partner in making transport operations smarter and more efficient.',
+    description: 'The Transport360 website was developed using modern front-end technologies including React, React Bootstrap, and Recharts to ensure a dynamic, responsive, and data-driven user experience. Designed as a transport and logistics management platform, the site features clean UI components, interactive dashboards, and real-time data visualization.',
     technologies: ['React', 'React Bootstrap', 'Recharts'],
     proImage: './assets/img/t360-dashboard.webp',
     proLink: 'https://transport360.in/',
   },
   {
     title: 'ICAI Indore',
-    description: 'ICAI, Indore was incepted in 1971. Since then, we have grown into a community of 4000+ members who have continued to provide exceptional Chartered Accountancy services across industries and a strong legacy for our future members.',
+    description: 'The Indore ICAI website was developed using AngularJS, PHP, Bootstrap, and UIkit. It provides a responsive, informative platform for ICAI Indore members, with dynamic content management and an intuitive user interface.',
     technologies: ['AngularJs', 'PHP', 'Bootstrap', 'UIKit'],
     proImage: './assets/img/icai-indore-banner.webp',
     proLink: 'https://indore-icai.org/',
   },
   {
     title: 'Get AI Life',
-    description: 'GetAI.life is a hybrid platform combining an AI-driven content creation toolkit with a community and resource portal. It belongs to the Fliki/MarketingBlocks ecosystem, offering dynamic AI solutions for marketing, creative content, and productivity—alongside a curated space for AI discussions, tool discovery, and peer collaboration. ',
+    description: 'The GetAI Life website is built using React, Next.js, and Tailwind CSS. It features a fast, scalable, and responsive platform with modern UI design and seamless navigation, offering a smooth user experience for AI-driven solutions.',
     technologies: ['React', 'Next Js', 'Tailwind'],
     proImage: './assets/img/getAi_life_banner.webp',
     proLink: 'https://getai.life/',
@@ -74,5 +74,33 @@ export const projects = [
     technologies: ['PHP', 'Bootstrap', 'UIKit'],
     proImage: './assets/img/Mahanagar-Bank_banner.webp',
     proLink: 'https://mnsbankbhopal.com/',
+  },
+  {
+    title: 'Shri Sai Academy',
+    description: 'The website for Shri Sai Academy, Mhow was designed and developed using WordPress with Elementor, ensuring a responsive, modern, and user-friendly interface. It showcases the school’s CBSE affiliation (Aff. No. 1030353) and highlights its commitment to holistic education through smart classrooms, science and computer labs, co-curricular activity spaces, and a strong leadership team.',
+    technologies: ['Wordpress', 'PHP', 'Elementor', 'Mysql'],
+    proImage: './assets/img/Shri-Sai-Academy-banner.webp',
+    proLink: 'https://shrisaiacademymhow.in/',
+  },
+  {
+    title: 'Elogistix',
+    description: 'The eLogistix website is a logistics management platform built with Angular, PHP, and Bootstrap. It features a responsive UI, real-time tracking, and efficient backend handling—delivering a smooth, user-focused experience.',
+    technologies: [ 'AngularJs', 'PHP', 'Bootstrap', 'Mysql'],
+    proImage: './assets/img/Elogistix-banner.webp',
+    proLink: 'https://elogistix.in/',
+  },
+  {
+    title: 'Zabsports',
+    description: 'The Zabsports website was developed using PHP, Bootstrap, and Swiper.js, offering a sleek and responsive sports platform. It features smooth sliders, clean UI components, and dynamic content to showcase products and events effectively.',
+    technologies: [ 'PHP', 'Bootstrap', 'Swipper'],
+    proImage: './assets/img/Zabsports-banner.webp',
+    proLink: 'https://zabsports.com/',
+  },
+  {
+    title: 'Ayushi Chauksey Adviser Pvt. Ltd.',
+    description: 'The Ayushi Chky website is a personal brand platform for an investment advisor, built using PHP, Bootstrap, Twitter Widget, and Owl Carousel. It features a responsive design with smooth sliders and integrated social media feeds. The layout is clean and professional, highlighting services and insights. The site ensures an engaging user experience across all devices.',
+    technologies: [ 'PHP', 'Bootstrap', ' Twitter Widget', 'Owl Carousel'],
+    proImage: './assets/img/ayushichky-banner.webp',
+    proLink: 'https://www.ayushichky.com/',
   },
 ];
