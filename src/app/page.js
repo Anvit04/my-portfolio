@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Mail, ExternalLink, Github, Linkedin, Menu, X, Sun, Moon, ChevronUp } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, Menu, X, Sun, Moon, ChevronUp, FileUser } from 'lucide-react';
 import { skills, projects } from "../constants/data";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -194,7 +194,7 @@ export default function Home() {
         <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrollY > 10 ? headerScrollBg : headerBg
           }`}>
           <nav className="container-nw mx-auto px-3 2xl:px-0 py-4 flex justify-between items-center">
-            <div className={`text-2xl font-bold bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}> ASC </div>
+            <div onClick={() => scrollToSection('home')} className={`text-2xl font-bold bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}> ASC </div>
 
             <div className="flex items-center gap-4">
 
@@ -277,18 +277,18 @@ export default function Home() {
         <section id="home" className=" min-h-[auto] md:min-h-screen pb-20 md:pb-0 pt-28 md:pt-0 flex items-start md:items-center justify-center md:justify-center px-3 sm:px-6 relative">
           <div className="container-nw mx-auto text-center z-10">
             <div className="animate-fade-in-up">
-              <div className='flex justify-center flex-col lg:flex-row lg:justify-between gap-y-14'>
+              <div className='flex justify-center flex-col lg:flex-row lg:justify-between gap-y-10'>
                 <div className='text-left'>
                   <h1 className={`text-[32px] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.3] font-extrabold inline-block mb-2 md:mb-4 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
                     Anvit Singh Chouhan
                   </h1>
 
-                  <p className={`text-lg md:text-xl mb-8 lg:max-w-2xl lg:mx-auto ${secondaryTextColor} leading-relaxed`}>
+                  <p className={`text-lg md:text-xl md:mb-8 lg:max-w-2xl lg:mx-auto ${secondaryTextColor} leading-relaxed`}>
                     Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies.
                     From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.
                   </p>
 
-                  <div className='flex items-center gap-3'>
+                  <div className=' hidden md:flex items-center gap-3'>
                     <button
                       onClick={() => scrollToSection('projects')}
                       className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
@@ -313,13 +313,27 @@ export default function Home() {
                     priority
                   />
                 </div>
+
+                <div className='flex md:hidden items-center justify-center gap-3'>
+                    <button
+                      onClick={() => scrollToSection('projects')}
+                      className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                      View My Work
+                    </button>
+
+                    <button
+                      onClick={openModal}
+                      className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                      <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
+                    </button>
+                  </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className={`py-16 md:py-20 ${sectionBg}`}>
+        <section id="skills" className={`py-19 md:py-20 ${sectionBg}`}>
           <div className="container-nw mx-auto px-3 sm:px-6">
             <h2
               id="skills-title"
@@ -359,7 +373,7 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-16 md:py-20">
+        <section id="projects" className="py-19 md:py-20">
           <div className="container-nw mx-auto px-3 sm:px-6">
             <h2
               id="projects-title"
@@ -418,8 +432,8 @@ export default function Home() {
               <div className="col-span-full flex justify-center mt-10">
                 <button
                   onClick={loadMoreProjects}
-                  className={`px-6 py-2.5 ${cardBg} ${cardBorder} rounded-full text-sm cursor-pointer font-medium hover:scale-105 transition-transform ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-white/90'}`}>
-                  Load More
+                  className={`inline-flex min-w-36 text-sm overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                  <span className={`px-5.5 py-2 md:px-7.5 md:py-3 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Load More</sapn></span>
                 </button>
               </div>
             )}
@@ -427,7 +441,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className={`py-16 md:py-20 ${sectionBg}`}>
+        <section id="contact" className={`py-19 md:py-20 ${sectionBg}`}>
           <div className="container-nw mx-auto px-3 sm:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h2
@@ -456,16 +470,16 @@ export default function Home() {
                   }`}
                 style={{ transitionDelay: '400ms' }}
               >
-                <button onClick={openModal} className="flex items-center cursor-pointer gap-3 px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25">
-                  <Mail size={20} />
+                <button onClick={openModal} className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25">
+                  <Mail size={20} className='-mt-0.5' />
                   Send Email
                 </button>
-                <button className="flex items-center cursor-pointer gap-3 px-8 py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
-                  <Github size={20} />
+                <button className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
+                  <FileUser size={20} className='-mt-0.5'/>
                   View Resume
                 </button>
-                <Link href={`https://www.linkedin.com/in/anvit-singh-chouhan-961b411bb/`} target='_blank' className="flex items-center cursor-pointer gap-3 px-8 py-4 border-2 border-purple-400 text-purple-400 font-semibold rounded-full hover:bg-purple-400 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/25">
-                  <Linkedin size={20} />
+                <Link href={`https://www.linkedin.com/in/anvit-singh-chouhan-961b411bb/`} target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-[#0a66c2] text-[#0a66c2] font-semibold rounded-full hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0a66c2]/25">
+                  <Linkedin size={20} className='-mt-0.5' />
                   LinkedIn
                 </Link>
               </div>
