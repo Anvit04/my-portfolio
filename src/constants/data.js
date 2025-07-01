@@ -69,6 +69,13 @@ export const projects = [
     proLink: 'https://app.karanfms.com/',
   },
   {
+    title: 'Agreement Paper',
+    description: 'The Agreement Paper platform was built using React, React Bootstrap, MUI, and Recharts. It offers a modern, secure solution for creating, editing, and storing legal documents. With built-in collaboration tools and e-signature capabilities, the site streamlines legal workflows through an intuitive, responsive UI and real-time analytics.',
+    technologies: ['React', 'React Bootstrap', 'MUI', 'Recharts'],
+    proImage: './assets/img/aggrement-paper-banner.webp',
+    proLink: 'https://app.agreementpaper.com/',
+  },
+  {
     title: 'Mahanagar Bank',
     description: 'Mahanagar Nagrik Sahakari Bank Limited is a community-focused urban cooperative bank in Bhopal, led by Prakash Assudani. It offers traditional banking services—deposit accounts, loan products, possibly POS/ATM services—targeted primarily at local individuals and small enterprises.',
     technologies: ['PHP', 'Bootstrap', 'UIKit'],

@@ -39,3 +39,32 @@ body {
 .mobSideNav.navOpen {
   @apply translate-0;
 }
+
+.__hamIcon_bar {
+  @apply flex flex-col justify-between w-6 h-5 overflow-hidden cursor-pointer md:hidden;
+}
+
+.__hamIcon_bar span {
+  @apply  w-full h-[2.4px] pointer-events-none;
+  transition: all 0.3s ease;
+}
+
+.__hamIcon_bar.__hamIcon_bar--opened {
+  @apply justify-center;
+}
+
+.__hamIcon_bar.__hamIcon_bar--opened span:nth-child(1) {
+  @apply  rotate-45;
+}
+
+.__hamIcon_bar.__hamIcon_bar--opened span:nth-child(2) {
+  @apply opacity-0;
+}
+
+.__hamIcon_bar.__hamIcon_bar--opened span:nth-child(3) {
+  @apply -rotate-45;
+}
+
+.__hamIcon_bar.__hamIcon_bar--opened span {
+  @apply mt-[-1.2px] mb-[-1.2px];
+}
