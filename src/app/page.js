@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Mail, ExternalLink, Github, Linkedin, Menu, X, Sun, Moon, ChevronUp, FileUser } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, Menu, X, ChevronUp, FileUser } from 'lucide-react';
 import { skills, projects } from "../constants/data";
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import FloatAnimation from '@/common/FloatAnimation/page';
+import Header from '@/common/Header/page';
+import Footer from '@/common/Footer/page';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -190,91 +193,22 @@ export default function Home() {
   return (
     <>
       <div className={`min-h-screen ${bgGradient} ${textColor} overflow-x-hidden`}>
+
         {/* Header */}
-        <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrollY > 10 ? headerScrollBg : headerBg
-          }`}>
-          <nav className="container-nw mx-auto px-3 2xl:px-0 py-4 flex justify-between items-center">
-            <div onClick={() => scrollToSection('home')} className={`text-2xl font-bold bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}> ASC </div>
+        <Header 
+        scrollSecOnClick={scrollToSection} 
+        scrollY={scrollY} 
+        headerScrollBg={headerScrollBg} 
+        headerBg={headerBg}
+        isMenuOpen={isMenuOpen}
+        theme={theme}
+        toggleThemeOnClick={toggleTheme}
+        setIsMenuOpenOnClick={setIsMenuOpen}
+        />
 
-            <div className="flex items-center gap-4">
-
-              {/* Desktop Navigation */}
-              <ul className="hidden md:flex space-x-8">
-                {['Home', 'Skills', 'Projects', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <button
-                      onClick={() => scrollToSection(item.toLowerCase())}
-                      className={`relative ${theme === 'dark' ? 'hover:text-cyan-400 ' : 'hover:text-[#FF4D00]'} transition-colors duration-300 group cursor-pointer`}
-                    >
-                      {item}
-                      <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} transition-all duration-300 group-hover:w-full`}></span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Mobile Menu Button */}
-              <button
-                className={isMenuOpen ? `__hamIcon_bar __hamIcon_bar--opened` : `__hamIcon_bar `}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                <span className={theme === `dark` ? `bg-white` : `bg-gradient-to-r from-slate-900 to-cyan-800`}></span>
-                <span className={theme === `dark` ? `bg-white` : `bg-gradient-to-r from-slate-900 to-cyan-800`}></span>
-                <span className={theme === `dark` ? `bg-white` : `bg-gradient-to-r from-slate-900 to-cyan-800`}></span>
-                {/* {isMenuOpen ? <X size={24} /> : <Menu size={24} />} */}
-              </button>
-
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-white/10 transition-colors duration-300 cursor-pointer"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="text-yellow-400" size={20} />
-                ) : (
-                  <Moon className="text-indigo-600" size={20} />
-                )}
-              </button>
-            </div>
-          </nav>
-
-          {/* Mobile Menu */}
-          {/* {isMenuOpen && ( */}
-          <div className={isMenuOpen ? `mobSideNav navOpen relative ${theme === 'dark' ? 'darker ' : 'lighter '}` : 'mobSideNav fixed'}>
-            <div className={isMenuOpen ? `md:hidden h-full relative z-10  ${theme === 'dark' ? 'bg-slate-900/25 backdrop-blur-md ' : 'bg-white/25 backdrop-blur-md '}` : ''}>
-              <ul className="py-4 px-6 space-y-4">
-                {['Home', 'Skills', 'Projects', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <button
-                      onClick={() => scrollToSection(item.toLowerCase())}
-                      className={`block w-full text-left ${theme === 'dark' ? 'hover:text-cyan-400 ' : 'hover:text-[#FF4D00]'} transition-colors duration-300 cursor-pointer`}>
-                      {item}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          {/* )} */}
-        </header>
 
         {/* Floating Background Elements */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className={`absolute top-1/4 right-1/4 w-32 h-32 rounded-full animate-pulse ${theme === 'dark'
-            ? 'bg-gradient-to-r from-cyan-400/10 to-pink-500/10'
-            : 'bg-gradient-to-r from-[#FF4D00]/20 to-[#FFB326]/20'
-            }`}></div>
-          <div className={`absolute top-3/4 right-1/12 w-48 h-48 rounded-full animate-bounce ${theme === 'dark'
-            ? 'bg-gradient-to-r from-pink-500/10 to-cyan-400/10'
-            : 'bg-gradient-to-r from-[#FFB326]/20 to-[#FF4D00]/20'
-            }`} style={{ animationDelay: '-2s', animationDuration: '4s' }}></div>
-          <div className={`absolute top-1/6 left-1/6 w-24 h-24 rounded-full animate-pulse ${theme === 'dark'
-            ? 'bg-gradient-to-r from-cyan-400/10 to-pink-500/10'
-            : 'bg-gradient-to-r from-[#FF4D00]/20 to-[#FFB326]/20'
-            }`} style={{ animationDelay: '-1s' }}></div>
-        </div>
+        <FloatAnimation theme={theme} />
 
         {/* Hero Section */}
         <section id="home" className=" min-h-[auto] md:min-h-screen pb-20 md:pb-0 pt-28 md:pt-0 flex items-start md:items-center justify-center md:justify-center px-3 sm:px-6 relative">
@@ -491,11 +425,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className={`py-8 ${footerBorder}`}>
-          <div className={`container-nw mx-auto px-3 sm:px-6 text-center ${footerText}`}>
-            <p>&copy; 2025 Anvit Singh Chouhan. Designed & Developed with passion using Next.js.</p>
-          </div>
-        </footer>
+        <Footer footerBorder={footerBorder} footerText={footerText}/>
 
         {scrollY > 50 ?
           <button
