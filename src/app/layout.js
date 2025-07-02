@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
-// import metaImg from 'assets/img/anvit-office-nw.webp'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +24,9 @@ export const metadata = {
     title: "Anvit - The Ultimate Web Designer",
     description: "Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies. From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.",
     url: "https://madebyanvit.vercel.app/",
+    siteName: "madebyanvit",
+    locale: "en_US",
+    type: "website",
     images: [
       {
         url: '/assets/img/anvit-office-nw.webp', 
