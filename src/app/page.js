@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Mail, ExternalLink, Github, Linkedin, Menu, X, ChevronUp, FileUser } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, ChevronUp, FileUser } from 'lucide-react';
 import { skills, projects } from "../constants/data";
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import FloatAnimation from '@/common/FloatAnimation/page';
 import Header from '@/common/Header/page';
 import Footer from '@/common/Footer/page';
+import HireModal from '@/common/HireModal/page';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -195,15 +195,15 @@ export default function Home() {
       <div className={`min-h-screen ${bgGradient} ${textColor} overflow-x-hidden`}>
 
         {/* Header */}
-        <Header 
-        scrollSecOnClick={scrollToSection} 
-        scrollY={scrollY} 
-        headerScrollBg={headerScrollBg} 
-        headerBg={headerBg}
-        isMenuOpen={isMenuOpen}
-        theme={theme}
-        toggleThemeOnClick={toggleTheme}
-        setIsMenuOpenOnClick={setIsMenuOpen}
+        <Header
+          scrollSecOnClick={scrollToSection}
+          scrollY={scrollY}
+          headerScrollBg={headerScrollBg}
+          headerBg={headerBg}
+          isMenuOpen={isMenuOpen}
+          theme={theme}
+          toggleThemeOnClick={toggleTheme}
+          setIsMenuOpenOnClick={setIsMenuOpen}
         />
 
 
@@ -252,18 +252,18 @@ export default function Home() {
                 </div>
 
                 <div className='flex md:hidden items-center justify-center gap-3'>
-                    <button
-                      onClick={() => scrollToSection('projects')}
-                      className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
-                      View My Work
-                    </button>
+                  <button
+                    onClick={() => scrollToSection('projects')}
+                    className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                    View My Work
+                  </button>
 
-                    <button
-                      onClick={openModal}
-                      className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
-                      <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
-                    </button>
-                  </div>
+                  <button
+                    onClick={openModal}
+                    className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                    <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -412,7 +412,7 @@ export default function Home() {
                   Send Email
                 </button>
                 <button className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
-                  <FileUser size={20} className='-mt-0.5'/>
+                  <FileUser size={20} className='-mt-0.5' />
                   View Resume
                 </button>
                 <Link href={`https://www.linkedin.com/in/anvit-singh-chouhan-961b411bb/`} target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-[#0a66c2] text-[#0a66c2] font-semibold rounded-full hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0a66c2]/25">
@@ -425,7 +425,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <Footer footerBorder={footerBorder} footerText={footerText}/>
+        <Footer footerBorder={footerBorder} footerText={footerText} />
 
         {scrollY > 50 ?
           <button
@@ -437,131 +437,19 @@ export default function Home() {
         }
 
         {/* Modal */}
-        <AnimatePresence>
-          {isModalOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                className="fixed inset-0 bg-black/25 backdrop-blur-sm bg-opacity-50 z-60"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={closeModal}
-              />
+        <HireModal
+          isModalOpen={isModalOpen}
+          onCloseModal={closeModal}
+          theme={theme}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handlePhoneInputChange={handlePhoneInputChange}
+          onHandleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          submitStatus={submitStatus}
+          openModal={openModal}
+        />
 
-              {/* Modal content */}
-              <motion.div
-                className={`fixed z-80 top-1/2 left-1/2 w-11/12 max-w-sm ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-xl transform -translate-x-1/2 -translate-y-1/2`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className={`${theme === 'dark' ? 'text-gray-100 border-white/25' : 'text-gray-800 border-slate-300'} flex justify-between px-4 py-2 border-[1px] border-t-0 border-l-0 border-r-0`}>
-                  <h2 className={`text-xl font-medium mb-0 `}>Start a project</h2>
-                  <span className='block cursor-pointer text-sm text-gray-400' onClick={closeModal}><X /></span>
-                </div>
-
-
-                <div className='px-4 py-5 flex flex-wrap gap-3.5'>
-                  <div className='w-full px-1.5'>
-                    <p className={`${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>Have a project that we could work together on? I would love to talk!</p>
-                  </div>
-                  <div className='w-full px-1.5'>
-                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[input:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[input:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 `}>
-                      <input
-                        id="fullname"
-                        name="Full Name"
-                        value={formData["Full Name"]}
-                        onChange={handleInputChange}
-                        type="text"
-                        placeholder="Full Name"
-                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
-                      />
-                    </div>
-                  </div>
-
-                  <div className='w-full px-1.5'>
-                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[input:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[input:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 `}>
-                      <input
-                        id="email"
-                        name="Email"
-                        value={formData["Email"]}
-                        onChange={handleInputChange}
-                        type="email"
-                        placeholder="Email"
-                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
-                      />
-                    </div>
-                  </div>
-
-                  <div className='w-full px-1.5'>
-                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[input:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[input:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 `}>
-                      <input
-                        id="phoneno"
-                        name="Phone Number"
-                        value={formData["Phone Number"]}
-                        onChange={handlePhoneInputChange}
-                        type="tel"
-                        placeholder="Phone Number"
-                        maxLength="10"
-                        pattern="[0-9]{10}"
-                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
-                      />
-                    </div>
-                  </div>
-
-                  <div className='w-full px-1.5'>
-                    <div className={`flex items-center ${theme === 'dark' ? 'bg-gray-600 outline-gray-800 has-[textarea:focus-within]:outline-cyan-400' : 'bg-white outline-gray-300 has-[textarea:focus-within]:outline-[#FF4D00]'}  pl-3 outline-1 -outline-offset-1  has-[textarea:focus-within]:outline-2 has-[textarea:focus-within]:-outline-offset-2 `}>
-                      <textarea
-                        id="message"
-                        name="Message"
-                        value={formData["Message"]}
-                        onChange={handleInputChange}
-                        type="text"
-                        placeholder="Enter a brief description of your project"
-                        className={`block min-w-0 grow py-1.5 pr-3 pl-1 text-base ${theme === 'dark' ? 'text-white placeholder:text-gray-200' : 'text-gray-900 placeholder:text-gray-400'}  focus:outline-none sm:text-sm/6`}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Status Message */}
-                {submitStatus === 'success' && (
-                  <div className='mb-4'>
-                    <p className={`px-4 py-2 text-center w-11/12 mx-auto rounded-sm text-sm bg-gradient-to-r text-white from-green-400 to-green-700 `}>
-                      Submitted successfully!
-                    </p>
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
-                  <div className='mb-4'>
-                    <p className={`px-4 py-2 text-center w-11/12 mx-auto rounded-sm text-sm bg-gradient-to-r text-white from-red-400 to-red-700 `}>
-                      Error submitting form. Please try again.
-                    </p>
-                  </div>
-                )}
-
-
-                <div className={`${theme === 'dark' ? 'border-white/25' : 'border-slate-300'} flex gap-2.5 px-4 py-2 border-[1px] border-b-0 border-l-0 border-r-0`}>
-                  <button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className={`px-4 py-2 text-sm cursor-pointer min-w-26 max-w-26 w-[120px] bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white rounded-full hover:scale-105 transition-transform`}>
-                    {isSubmitting ? 'Sending...' : 'Submit'}
-                  </button>
-
-                  <button
-                    onClick={closeModal}
-                    className={`px-4 py-2 text-sm cursor-pointer min-w-26 max-w-26 w-[120px] bg-gradient-to-r from-slate-300 to-slate-400 text-black rounded-full hover:scale-105 transition-transform`}>
-                    Cancel
-                  </button>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
 
         <style jsx>{`
         @keyframes fade-in-up {
