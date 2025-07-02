@@ -242,7 +242,7 @@ export default function Home() {
 
                 <div className='w-full max-w-100 mx-auto md:mx-0'>
                   <Image
-                    className={`w-full max-w-60 xl:max-w-80 p-1 mx-auto rounded-full bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`}
+                    className={`w-full max-w-60 xl:max-w-80 p-1.5 mx-auto rounded-full bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`}
                     src="/assets/img/anvit-office-nw.webp"
                     alt="A sample image"
                     width={600}
