@@ -63,7 +63,7 @@ export const projects = [
   },
   {
     title: 'Karan Group',
-    description: 'The Karan Group is a versatile African conglomerate with three main divisions: Energy, Logistics, and Agro. Its diversified structure allows it to deliver integrated solutions across key industries.',
+    description: 'The Karan Group FMS (Fleet Management System) application was developed using React, React Bootstrap, and Recharts. Designed for a leading African conglomerate, the platform supports divisions in Energy, Logistics, and Agro, offering real-time data visualization, operational tracking, and a responsive, user-centric interface for streamlined business management.',
     technologies: ['React', 'React Bootstrap', 'Recharts'],
     proImage: './assets/img/karan_group-banner.webp',
     proLink: 'https://app.karanfms.com/',
@@ -76,8 +76,15 @@ export const projects = [
     proLink: 'https://app.agreementpaper.com/',
   },
   {
+    title: 'Top2020',
+    description: 'The Top2020 sports betting platform was developed using PHP, Bootstrap, and UIkit. It provides users with access to a wide range of sports events for online betting. The site features a responsive, user-friendly interface, robust security measures for data protection, and smooth integration with payment gateways for secure and convenient transactions.',
+    technologies: ['PHP', 'Bootstrap', 'UIKit'],
+    proImage: './assets/img/top2020.webp',
+    proLink: 'https://user.betlagao.com/',
+  },
+  {
     title: 'Mahanagar Bank',
-    description: 'Mahanagar Nagrik Sahakari Bank Limited is a community-focused urban cooperative bank in Bhopal, led by Prakash Assudani. It offers traditional banking services—deposit accounts, loan products, possibly POS/ATM services—targeted primarily at local individuals and small enterprises.',
+    description: 'The Mahanagar Nagrik Sahakari Bank Ltd. website was developed using PHP, Bootstrap, and UIkit. It serves as an informative platform for this Bhopal-based urban cooperative bank, offering details on deposit accounts, loans, and customer services. The site features a responsive layout, clean design, and user-friendly navigation to support the bank’s community-focused mission.',
     technologies: ['PHP', 'Bootstrap', 'UIKit'],
     proImage: './assets/img/Mahanagar-Bank_banner.webp',
     proLink: 'https://mnsbankbhopal.com/',
@@ -111,6 +118,13 @@ export const projects = [
     proLink: 'https://dreamconceptsuae.com/',
   },
   {
+    title: 'AASK Legal Advisors',
+    description: 'The AASK Legal Advisors website was developed using WordPress, PHP, Elementor, Owl Carousel, and MySQL. It showcases a multidisciplinary professional services firm offering expertise in taxation, corporate law, finance, auditing, and start-up advisory. The site features a responsive design with smooth sliders, structured service presentation, and an intuitive layout to highlight their comprehensive legal and financial solutions.',
+    technologies: ['Wordpress', 'PHP', 'Elementor', 'Owl Carousel', 'MySQL'],
+    proImage: './assets/img/aasklegal.webp',
+    proLink: 'https://aasklegal.com/',
+  },
+  {
     title: 'Ayushi Chauksey Adviser Pvt. Ltd.',
     description: 'The Ayushi Chky website is a personal brand platform for an investment advisor, built using PHP, Bootstrap, Twitter Widget, and Owl Carousel. It features a responsive design with smooth sliders and integrated social media feeds. The layout is clean and professional, highlighting services and insights. The site ensures an engaging user experience across all devices.',
     technologies: [ 'PHP', 'Bootstrap', ' Twitter Widget', 'Owl Carousel'],
@@ -137,5 +151,19 @@ export const projects = [
     technologies: ['Wordpress', 'PHP', 'Elementor', 'MySQL'],
     proImage: './assets/img/GrowMoreTechnology-banner.webp',
     proLink: 'https://growmoretechnology.com/',
+  },
+  {
+    title: 'Fairpack',
+    description: 'The Fair Pack India website was developed using PHP, Bootstrap, Owl Carousel, and Sweet Alert. It showcases the company’s wide range of packaging solutions including corrugated, die-cut, and export-quality boxes. With a responsive design and smooth sliders, the site provides a clean, user-friendly interface for clients across industries.',
+    technologies: ['PHP', 'Bootstrap', 'Owl Carousel', 'Sweet Alert'],
+    proImage: './assets/img/fairpack.webp',
+    proLink: 'https://fairpackindia.com/',
+  },
+  {
+    title: 'Smart Field',
+    description: 'The Smart Field website was developed using Tailwind CSS, Tailwind UI, and jQuery. It showcases a field force management platform that streamlines sales and service operations through real-time tracking of location, attendance, expenses, and orders—all within a clean, responsive interface.',
+    technologies: ['Tailwind', 'Tailwind UI', 'Jquery'],
+    proImage: './assets/img/smartfield.webp',
+    proLink: 'https://www.smartfield.in',
   },
 ];
