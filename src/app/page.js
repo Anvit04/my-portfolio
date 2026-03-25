@@ -415,7 +415,7 @@ export default function Home() {
                   <FileUser size={20} className='-mt-0.5' />
                   View Resume
                 </a>
-                <Link href={`https://www.linkedin.com/in/anvit-singh-chouhan-961b411bb/`} target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-[#0a66c2] text-[#0a66c2] font-semibold rounded-full hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0a66c2]/25">
+                <Link href={`https://www.linkedin.com/in/anvitt-singh-chauhan-961b411bb`} target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-[#0a66c2] text-[#0a66c2] font-semibold rounded-full hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0a66c2]/25">
                   <Linkedin size={20} className='-mt-0.5' />
                   LinkedIn
                 </Link>
