@@ -18,18 +18,18 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Anvit - The Ultimate Web Designer",
+  title: "Anvitt - The Ultimate Web Designer",
   description: "Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies. From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.",
   openGraph: {
-    title: "Anvit - The Ultimate Web Designer",
+    title: "Anvitt - The Ultimate Web Designer",
     description: "Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies. From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.",
-    url: "https://madebyanvit.vercel.app/",
-    siteName: "madebyanvit",
+    url: "https://madebyanvitt.vercel.app/",
+    siteName: "madebyanvitt",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: '/assets/img/anvit-office-nw.webp', 
+        url: '/assets/img/anvit_profestional.jpeg', 
         width: 1200,
         height: 630,
         type: "image/jpg",
