@@ -41,6 +41,13 @@ export const skills = [
 // constants/projects.js
 export const projects = [
   {
+    title: 'MySifarish',
+    description: 'Developed a responsive recommendation and networking platform enabling users to share and explore trusted suggestions within their network. Built dynamic UI components using Next.js, React.js, and Tailwind CSS, optimizing performance, SEO, and user experience.',
+    technologies: ['Next.js','React', 'Tailwind CSS'],
+    proImage: './assets/img/MySifarish.webp',
+    proLink: 'https://www.mysifarish.com/',
+  },
+  {
     title: 'Transport 360',
     description: 'The Transport360 website was developed using modern front-end technologies including React, React Bootstrap, and Recharts to ensure a dynamic, responsive, and data-driven user experience. Designed as a transport and logistics management platform, the site features clean UI components, interactive dashboards, and real-time data visualization.',
     technologies: ['React', 'React Bootstrap', 'Recharts'],
