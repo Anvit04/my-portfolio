@@ -5,7 +5,7 @@ const Footer = ({footerBorder, footerText}) => {
         <>
             <footer className={`py-8 ${footerBorder}`}>
                 <div className={`container-nw mx-auto px-3 sm:px-6 text-center ${footerText}`}>
-                    <p>&copy; 2025 Anvit Singh Chouhan. Designed & Developed with passion using Next.js.</p>
+                    <p>&copy; 2026 Anvitt Singh Chauhan. Designed & Developed with passion using Next.js.</p>
                 </div>
             </footer>
         </>
