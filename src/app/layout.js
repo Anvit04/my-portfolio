@@ -18,10 +18,10 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Anvitt - The Ultimate Web Designer",
+  title: "Anvitt Singh Chauhan | Frontend Developer & UI Specialist",
   description: "Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies. From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.",
   openGraph: {
-    title: "Anvitt - The Ultimate Web Designer",
+    title: "Anvitt Singh Chauhan | Frontend Developer & UI Specialist",
     description: "Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies. From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.",
     url: "https://madebyanvitt.vercel.app/",
     siteName: "madebyanvitt",

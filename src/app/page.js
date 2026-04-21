@@ -411,7 +411,7 @@ export default function Home() {
                   <Mail size={20} className='-mt-0.5' />
                   Send Email
                 </button>
-                <a href='./assets/Anvitt_Singh_Chauhan—Resume.pdf' target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
+                <a href='./assets/Anvitt_Singh_Chauhan.pdf' target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
                   <FileUser size={20} className='-mt-0.5' />
                   View Resume
                 </a>
