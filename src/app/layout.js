@@ -32,7 +32,7 @@ export const metadata = {
       {
         url: 'https://madebyanvitt.vercel.app/assets/img/anvit_profestional.jpeg',
         width: 1200,
-        height: 630,
+        height: 930,
         type: "image/jpg",
       },
     ],
