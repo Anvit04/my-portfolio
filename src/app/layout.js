@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,10 +19,10 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Anvitt Singh Chauhan | Frontend Developer & UI Specialist",
+  title: "Anvit Singh Chouhan | Frontend Developer & UI Specialist",
   description: "Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies. From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.",
   openGraph: {
-    title: "Anvitt Singh Chauhan | Frontend Developer & UI Specialist",
+    title: "Anvit Singh Chouhan | Frontend Developer & UI Specialist",
     description: "Crafting exceptional digital experiences with 3+ years of expertise in modern web technologies. From responsive designs to full-stack applications, I bring ideas to life with pixel-perfect precision.",
     url: "https://madebyanvitt.vercel.app/",
     siteName: "madebyanvitt",
@@ -29,7 +30,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: '/assets/img/anvit_profestional.jpeg', 
+        url: 'https://madebyanvitt.vercel.app/assets/img/anvit_profestional.jpeg',
         width: 1200,
         height: 630,
         type: "image/jpg",
@@ -43,6 +44,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
       <body>
         {children}
+
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );

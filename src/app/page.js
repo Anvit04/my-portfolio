@@ -217,7 +217,7 @@ export default function Home() {
               <div className='flex justify-center flex-col lg:flex-row lg:justify-between gap-y-10'>
                 <div className='text-left'>
                   <h1 className={`text-[32px] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.3] font-extrabold inline-block mb-2 md:mb-4 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>
-                    Anvitt Singh Chauhan
+                    Anvit Singh Chouhan
                   </h1>
 
                   <p className={`text-lg md:text-xl md:mb-8 lg:max-w-2xl lg:mx-auto ${secondaryTextColor} leading-relaxed`}>
