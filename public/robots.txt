@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://madebyanvitt.vercel.app
+
+# Sitemaps
+Sitemap: https://madebyanvitt.vercel.app/sitemap.xml
