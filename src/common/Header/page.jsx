@@ -7,7 +7,7 @@ const Header = ({scrollSecOnClick, scrollY, headerScrollBg, headerBg, isMenuOpen
         <>
             <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrollY > 10 ? headerScrollBg : headerBg}`}>
                 <nav className="container-nw mx-auto px-3 2xl:px-0 py-4 flex justify-between items-center">
-                    <div onClick={() => scrollSecOnClick('home')} className={`text-2xl font-bold bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}> ASC </div>
+                    <div onClick={() => scrollSecOnClick('home')} className={`text-2xl font-bold bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent cursor-pointer transition-transform duration-300 hover:scale-110 hover:-translate-y-0.5`} style={{ transformStyle: 'preserve-3d' }}> ASC </div>
 
                     <div className="flex items-center gap-4">
 

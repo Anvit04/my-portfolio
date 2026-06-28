@@ -9,6 +9,7 @@ import FloatAnimation from '@/common/FloatAnimation/page';
 import Header from '@/common/Header/page';
 import Footer from '@/common/Footer/page';
 import HireModal from '@/common/HireModal/page';
+import Tilt3D from '@/common/Tilt3D/page';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -228,39 +229,42 @@ export default function Home() {
                   <div className=' hidden md:flex items-center gap-3'>
                     <button
                       onClick={() => scrollToSection('projects')}
-                      className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                      className={`btn-3d inline-block min-w-36 text-sm md:text-base px-6 py-2.5 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
                       View My Work
                     </button>
 
                     <button
                       onClick={openModal}
-                      className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                      className={`btn-3d inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
                       <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
                     </button>
                   </div>
                 </div>
 
-                <div className='w-full max-w-100 mx-auto md:mx-0'>
-                  <Image
-                    className={`w-full max-w-60 xl:max-w-80 p-1.5 aspect-square object-cover object-top mx-auto rounded-full bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`}
-                    src="/assets/img/anvit_profestional.jpeg"
-                    alt="A sample image"
-                    width={600}
-                    height={400}
-                    priority
-                  />
-                </div>
+                <Tilt3D className="w-full max-w-100 mx-auto md:mx-0 hero-float-3d" intensity={14}>
+                  <div className="relative">
+                    <div className={`absolute -inset-3 rounded-full bg-gradient-to-r opacity-40 blur-xl ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`} />
+                    <Image
+                      className={`relative w-full max-w-60 xl:max-w-80 p-1.5 aspect-square object-cover object-top mx-auto rounded-full bg-gradient-to-r shadow-2xl ${theme === 'dark' ? 'from-cyan-400 to-pink-500 shadow-cyan-500/20' : 'from-[#FF4D00] to-[#FFB326] shadow-orange-500/20'}`}
+                      src="/assets/img/anvit_profestional.jpeg"
+                      alt="Anvit Singh Chouhan - Frontend Developer"
+                      width={600}
+                      height={400}
+                      priority
+                    />
+                  </div>
+                </Tilt3D>
 
                 <div className='flex md:hidden items-center justify-center gap-3'>
                   <button
                     onClick={() => scrollToSection('projects')}
-                    className={`inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                    className={`btn-3d inline-block min-w-36 text-sm md:text-base px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
                     View My Work
                   </button>
 
                   <button
                     onClick={openModal}
-                    className={`inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                    className={`btn-3d inline-flex min-w-36 text-sm md:text-base overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
                     <span className={`px-5.5 py-2.5 md:px-7.5 md:py-3.5 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Hire Me</sapn></span>
                   </button>
                 </div>
@@ -275,24 +279,24 @@ export default function Home() {
             <h2
               id="skills-title"
               data-animate
-              className={`text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
+              className={`section-title-3d text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
                 } bg-clip-text text-transparent transition-all duration-700 ${visibleElements.has('skills-title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
             >
               Technical Expertise
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 perspective-scene">
               {skills.map((skill, index) => (
-                <div
-                  key={skill.title}
-                  id={`skill-${index}`}
-                  data-animate
-                  className={`${cardBg} ${cardBorder} p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-400 cursor-pointer group hover:shadow-2xl ${theme === 'dark' ? 'hover:shadow-cyan-400/20' : 'hover:shadow-slate-300'
-                    } ${visibleElements.has(`skill-${index}`)
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-8'
-                    } ${hoverCard}`} >
+                <Tilt3D key={skill.title} intensity={10} className="flex">
+                  <div
+                    id={`skill-${index}`}
+                    data-animate
+                    className={`card-3d relative ${cardBg} ${cardBorder} p-6 md:p-8 rounded-2xl transition-all duration-400 cursor-pointer group hover:shadow-2xl ${theme === 'dark' ? 'hover:shadow-cyan-400/20' : 'hover:shadow-slate-300'
+                      } ${visibleElements.has(`skill-${index}`)
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-8'
+                      } ${hoverCard}`} >
                   <div className={`text-4xl mb-4 w-16 h-16 bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                     {skill.icon}
                   </div>
@@ -303,7 +307,8 @@ export default function Home() {
                   <p className={`${secondaryTextColor} leading-relaxed`}>
                     {skill.description}
                   </p>
-                </div>
+                  </div>
+                </Tilt3D>
               ))}
             </div>
           </div>
@@ -315,25 +320,25 @@ export default function Home() {
             <h2
               id="projects-title"
               data-animate
-              className={`text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
+              className={`section-title-3d text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
                 } bg-clip-text text-transparent transition-all duration-700 ${visibleElements.has('projects-title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
             >
               Featured Projects
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 perspective-scene">
               {projects.slice(0, visibleProjects).map((project, index) => (
-                <div
-                  key={project.title}
-                  id={`project-${index}`}
-                  data-animate
-                  className={`${cardBg} ${cardBorder} rounded-2xl overflow-hidden hover:scale-103 transition-all duration-400 group hover:shadow-2xl ${theme === 'dark' ? 'hover:shadow-pink-500/20' : 'hover:shadow-slate-300'
-                    } ${visibleElements.has(`project-${index}`)
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-8'
-                    }`}
-                >
+                <Tilt3D key={project.title} intensity={8} className="flex">
+                  <div
+                    id={`project-${index}`}
+                    data-animate
+                    className={`card-3d relative ${cardBg} ${cardBorder} rounded-2xl overflow-hidden transition-all duration-400 group hover:shadow-2xl ${theme === 'dark' ? 'hover:shadow-pink-500/20' : 'hover:shadow-slate-300'
+                      } ${visibleElements.has(`project-${index}`)
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-8'
+                      }`}
+                  >
                   <div className={`h-48 ${cardBorder} border-b border-t-0 border-l-0 border-r-0 overflow-hidden`}>
                     <div className={` h-full flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-400`}
                       style={{ backgroundImage: `url(${project.proImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -361,7 +366,8 @@ export default function Home() {
                       View Project <ExternalLink size={16} />
                     </Link>
                   </div>
-                </div>
+                  </div>
+                </Tilt3D>
               ))}
             </div>
 
@@ -369,7 +375,7 @@ export default function Home() {
               <div className="col-span-full flex justify-center mt-10">
                 <button
                   onClick={loadMoreProjects}
-                  className={`inline-flex min-w-36 text-sm overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
+                  className={`btn-3d inline-flex min-w-36 text-sm overflow-hidden p-0.5 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-400/25`}>
                   <span className={`px-5.5 py-2 md:px-7.5 md:py-3 ${bgGradient} rounded-full flex justify-center w-full`}> <sapn className={`bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} bg-clip-text text-transparent`}>Load More</sapn></span>
                 </button>
               </div>
@@ -384,7 +390,7 @@ export default function Home() {
               <h2
                 id="contact-title"
                 data-animate
-                className={`text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
+                className={`section-title-3d text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r ${theme === 'dark' ? 'from-white to-cyan-400' : 'from-slate-900 to-cyan-600'
                   } bg-clip-text text-transparent transition-all duration-700 ${visibleElements.has('contact-title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
               >
@@ -407,15 +413,15 @@ export default function Home() {
                   }`}
                 style={{ transitionDelay: '400ms' }}
               >
-                <button onClick={openModal} className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25">
+                <button onClick={openModal} className="btn-3d flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25">
                   <Mail size={20} className='-mt-0.5' />
                   Send Email
                 </button>
-                <a href='./assets/Anvitt_Singh_Chauhan.pdf' target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
+                <a href='./assets/Anvitt_Singh_Chauhan.pdf' target='_blank' className="btn-3d flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
                   <FileUser size={20} className='-mt-0.5' />
                   View Resume
                 </a>
-                <Link href={`https://www.linkedin.com/in/anvitt-singh-chauhan-961b411bb`} target='_blank' className="flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-[#0a66c2] text-[#0a66c2] font-semibold rounded-full hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0a66c2]/25">
+                <Link href={`https://www.linkedin.com/in/anvitt-singh-chauhan-961b411bb`} target='_blank' className="btn-3d flex items-center cursor-pointer text-sm md:text-base gap-2 nd:gap-3 px-7 md:px-8 py-3 md:py-4 border-2 border-[#0a66c2] text-[#0a66c2] font-semibold rounded-full hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0a66c2]/25">
                   <Linkedin size={20} className='-mt-0.5' />
                   LinkedIn
                 </Link>
@@ -430,7 +436,7 @@ export default function Home() {
         {scrollY > 50 ?
           <button
             onClick={() => scrollToSection('home')}
-            className={`fixed bottom-20 md:bottom-10 right-10 transition-all ${scrollY > 120 ? 'opacity-100' : 'opacity-0'} flex justify-center items-center rounded-full text-white w-9 h-9 bg-gradient-to-r cursor-pointer ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'}`}>
+            className={`btn-3d fixed bottom-20 md:bottom-10 right-10 transition-all ${scrollY > 120 ? 'opacity-100' : 'opacity-0'} flex justify-center items-center rounded-full text-white w-9 h-9 bg-gradient-to-r cursor-pointer shadow-lg hover:shadow-xl ${theme === 'dark' ? 'from-cyan-400 to-pink-500 shadow-cyan-500/30' : 'from-[#FF4D00] to-[#FFB326] shadow-orange-500/30'}`}>
             <ChevronUp />
           </button>
           : ''

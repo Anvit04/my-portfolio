@@ -18,12 +18,14 @@ const HireModal = ({isModalOpen, onCloseModal, theme, formData, handleInputChang
                         />
 
                         {/* Modal content */}
+                        <div className="fixed inset-0 z-80 flex items-center justify-center pointer-events-none">
                         <motion.div
-                            className={`fixed z-80 top-1/2 left-1/2 w-11/12 max-w-sm ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-xl transform -translate-x-1/2 -translate-y-1/2`}
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 50 }}
-                            transition={{ duration: 0.3 }}
+                            className={`pointer-events-auto w-11/12 max-w-sm ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-2xl rounded-lg overflow-hidden`}
+                            style={{ transformPerspective: 1000 }}
+                            initial={{ opacity: 0, rotateX: -12, y: 40, scale: 0.95 }}
+                            animate={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, rotateX: 12, y: 40, scale: 0.95 }}
+                            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
                         >
                             <div className={`${theme === 'dark' ? 'text-gray-100 border-white/25' : 'text-gray-800 border-slate-300'} flex justify-between px-4 py-2 border-[1px] border-t-0 border-l-0 border-r-0`}>
                                 <h2 className={`text-xl font-medium mb-0 `}>Start a project</h2>
@@ -116,7 +118,7 @@ const HireModal = ({isModalOpen, onCloseModal, theme, formData, handleInputChang
                                 <button
                                     onClick={onHandleSubmit}
                                     disabled={isSubmitting}
-                                    className={`px-4 py-2 text-sm cursor-pointer min-w-26 max-w-26 w-[120px] bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white rounded-full hover:scale-105 transition-transform`}>
+                                    className={`btn-3d px-4 py-2 text-sm cursor-pointer min-w-26 max-w-26 w-[120px] bg-gradient-to-r ${theme === 'dark' ? 'from-cyan-400 to-pink-500' : 'from-[#FF4D00] to-[#FFB326]'} text-white rounded-full hover:scale-105 transition-transform`}>
                                     {isSubmitting ? 'Sending...' : 'Submit'}
                                 </button>
 
@@ -127,6 +129,7 @@ const HireModal = ({isModalOpen, onCloseModal, theme, formData, handleInputChang
                                 </button>
                             </div>
                         </motion.div>
+                        </div>
                     </>
                 )}
             </AnimatePresence>
