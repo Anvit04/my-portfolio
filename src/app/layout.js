@@ -42,6 +42,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
+      <meta name="google-site-verification" content="Fb-QgDlxz9RxnsVZ5kFtEp6HaxuGqtGEb6VijaLOua4" />
       <body>
         {children}
 
